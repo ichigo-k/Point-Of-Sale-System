@@ -1,0 +1,16 @@
+@use "custom";
+
+
+///Componets
+@use"./componets/animation";
+@use"./componets/button";
+@use"./componets/mixins";
+@use"./componets/typography";
+
+
+
+///Pages
+@use"./pages/dashboard";
+@use"./pages/login";
+@use"./pages/signup";
+@use"./pages/home";
