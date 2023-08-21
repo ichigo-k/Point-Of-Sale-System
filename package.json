@@ -1,0 +1,28 @@
+{
+  "name": "Point-Of-Sale-System",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^5.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^7.4.3",
+    "nodemon": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ichigo-k/Point-Of-Sale-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ichigo-k/Point-Of-Sale-System/issues"
+  },
+  "homepage": "https://github.com/ichigo-k/Point-Of-Sale-System#readme"
+}
