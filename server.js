@@ -1,10 +1,18 @@
+/// VARIABLES FOR SERVER
 const express = require("express")
-const { default: mongoose, connect } = require("mongoose")
 const app = express()
 const PORT = 3000;
+
+///VARIABLES FOR DATABASE 
+const { default: mongoose, connect } = require("mongoose")
+const user = require("./models/usersDB")
+
+////VARIABLES FOR DOTENV 
 const dotenv = require('dotenv');
 dotenv.config(); 
 
+//// SignUp routes
+const signupRoute = require("./routes/signup")
 
 ///Setting view engine 
 app.set("view-engine","ejs")
@@ -20,6 +28,6 @@ mongoose.connect(process.env.URI)
     })
 }) 
 .catch((err)=>{
-    console.error(`Something went wrong ${err} `)  ///Error handler
+    console.error(`Something went wrong : ${err} `)  ///Error handler
 })
 
