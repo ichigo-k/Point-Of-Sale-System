@@ -8,6 +8,7 @@
     "auto-prefixer": "^0.4.2",
     "bootstrap": "^5.3.1",
     "dart-sass": "^1.25.0",
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "mongoose": "^7.4.3",
