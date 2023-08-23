@@ -1,0 +1,28 @@
+<%- include("./partials/header.ejs") %>
+
+<body>
+    <div class="container form-class">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+              <section class="section">
+                <h2 class="text-center head-text"><span class="text-primary">LOG</span>IN</h2>
+                <h5 class="text-center p-text">Don't have an account yet? <a href="./signup">SignUp</a></h5>
+              </section>
+  
+              <form action="/login" method="post">
+                <div class="row justify-content-center">
+                  <div class="col-lg-5 col-md-7 ">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control bg-body-secondary mb-3" name="email" required>
+  
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control bg-body-secondary" name="password" required>
+  
+                    <button type="submit" class="button">login</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+  </body>
