@@ -6,6 +6,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "auto-prefixer": "^0.4.2",
+    "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.1",
     "dart-sass": "^1.25.0",
     "dotenv": "^16.3.1",

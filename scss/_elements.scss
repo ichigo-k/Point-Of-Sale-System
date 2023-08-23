@@ -1,1 +1,108 @@
 @import "./custom";
+
+.form-class{
+    /* background-color: #e85d04; */
+    position: relative;
+    top: 3rem;
+  }
+  .head-text{
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .p-text{
+    font-family: cursive;
+    margin-bottom: 3rem;
+  }
+  .button{
+    margin-top: 2rem;
+    height: 2.5rem;
+    width: 7rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-color: $primary;
+    border: none;
+    border-radius: 30px;
+    position: relative;
+    transition: 0.5s ease-out;
+    margin-bottom: 5rem;
+    left: 60%;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .button:hover{
+    background-color: $secondary;
+    transform: translateX(2rem);
+  }
+
+  label{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.1rem;
+  }
+  .handels a{
+    text-decoration: none;
+      }
+      .logo{
+        height: 3rem;
+      }
+
+      .menu{
+       // background: linear-gradient(to right, $primary,$secondary);
+    
+        li{
+            padding: 0 0.7rem;
+    
+            a{
+                color: $secondary;
+                font-weight: 600;
+                margin-right: 2rem;
+
+                &:hover{
+                  color: $primary;
+                }
+                &:active{
+                  color: $secondary;
+                }
+
+                &::before{
+                  content: " ";
+                  position:absolute;
+                  width: 2rem;
+                  height: 3px;
+                  top: 3rem;
+                  // background: linear-gradient(to left,$primary,$secondary);
+                  transition: 0.5s ease-in-out;
+                  
+                  &:hover{
+                    background: linear-gradient(to left,$primary,$secondary);
+                  }
+                }
+                
+            }
+            
+        }
+    }
+   
+
+    nav{
+
+      button{
+        border:4px solid $white;
+        background-color: $secondary;
+        border-radius: 2rem;
+        width: 7rem;
+        height: 2.5rem;
+        position: relative;
+
+        color: $white;
+        font-weight: 600;
+        transition: 0.5s ease-out;
+
+        &:hover{
+          background-color: $primary;
+        }
+      }
+
+    }
