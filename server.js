@@ -1,16 +1,13 @@
-/// VARIABLES FOR SERVER
 const express = require("express")
 const app = express()
-const PORT = 3000;
-
-///VARIABLES FOR DATABASE 
+const PORT = 3000; 
 const { default: mongoose, connect } = require("mongoose")
 const user = require("./models/usersDB")
 const product = require("./models/ProductsDB")
-
-////VARIABLES FOR DOTENV 
 const dotenv = require('dotenv');
 dotenv.config(); 
+
+
 
 app.use(express.urlencoded({extended:false}))
 
@@ -20,21 +17,19 @@ app.use(express.static(__dirname + '/assets'));
 
 
 
-
-
 //// SignUp routes
 const signupRoutes = require("./routes/signup")
-app.use("/signup",signupRoutes)
+app.use("/signup",checkNotauth,signupRoutes)
 
 
 //// Login routes
 const loginRoutes = require("./routes/login")
-app.use("/login",loginRoutes)
+app.use("/login",checkNotauth,loginRoutes)
 
 
-app.get("/home",(req,res)=>{
-    res.render("home.ejs");
-})
+//// Home routes
+const homeRoutes = require("./routes/home");
+app.use("/home",checkAuth,homeRoutes)
 
 
 

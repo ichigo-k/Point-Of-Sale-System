@@ -1,11 +1,15 @@
+<% title = "Log In to Your Profile" %>
 <%- include("./partials/header.ejs") %>
+<% if(messages.err){ %>
+    <%= messages.err %>
+  <%}%>
 
 <body>
     <div class="container form-class">
         <div class="row justify-content-center">
             <div class="col-md-9">
               <section class="section">
-                <h2 class="text-center head-text"><span class="text-primary">LOG</span>IN</h2>
+                <h2 class="text-center head-text"><span class="text-primary">Log</span>In</h2>
                 <h5 class="text-center p-text">Don't have an account yet? <a href="./signup">SignUp</a></h5>
               </section>
   
