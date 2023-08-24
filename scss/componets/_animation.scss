@@ -1,0 +1,31 @@
+@import "../custom";
+
+
+button{
+
+    &:hover{
+      background-color: $primary;
+    }
+  }
+
+
+  .menu{
+       
+    li{
+
+        a{
+            &:hover{
+              color: $primary;
+            }
+
+            &::before{
+              
+              &:hover{
+                background: linear-gradient(to left,$primary,$secondary);
+              }
+            }
+            
+        }
+    }
+}
+        
