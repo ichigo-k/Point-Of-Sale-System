@@ -16,31 +16,37 @@ var product = require("./models/ProductsDB");
 var dotenv = require('dotenv');
 
 dotenv.config();
-app.use(express.urlencoded({
-  extended: false
-})); ///Setting view engine 
 
-app.set("view-engine", "ejs");
-app.use(express["static"](__dirname + '/assets')); //// SignUp routes
+try {
+  app.use(express.urlencoded({
+    extended: false
+  })); ///Setting view engine 
 
-var signupRoutes = require("./routes/signup");
+  app.set("view-engine", "ejs");
+  app.use(express["static"](__dirname + '/assets')); //// SignUp routes
 
-app.use("/signup", checkNotauth, signupRoutes); //// Login routes
+  var signupRoutes = require("./routes/signup");
 
-var loginRoutes = require("./routes/login");
+  app.use("/signup", signupRoutes); //// Login routes
 
-app.use("/login", checkNotauth, loginRoutes); //// Home routes
+  var loginRoutes = require("./routes/login");
 
-var homeRoutes = require("./routes/home");
+  app.use("/login", loginRoutes); //// Home routes
 
-app.use("/home", checkAuth, homeRoutes); ///Connect to mongodb Databse
+  var homeRoutes = require("./routes/home");
 
-mongoose.connect(process.env.URI).then(function () {
-  console.log('Connected To MongoDB'); ///SUCESS MESSAGE
+  app.use("/home", homeRoutes); ///Connect to mongodb Databse
 
-  app.listen(PORT, function () {
-    console.log("Server is running on port ".concat(PORT)); ///SERVER RUNNING ON PORT
+  mongoose.connect(process.env.URI).then(function () {
+    console.log('Connected To MongoDB'); ///SUCESS MESSAGE
+
+    app.listen(PORT, function () {
+      console.log("Server is running on port ".concat(PORT)); ///SERVER RUNNING ON PORT
+    });
+  })["catch"](function (err) {
+    console.error("Something went wrong : ".concat(err, " ")); ///Error handler
   });
-})["catch"](function (err) {
-  console.error("Something went wrong : ".concat(err, " ")); ///Error handler
-});
+} catch (error) {
+  console.log("There is an error");
+  console.log(error);
+}

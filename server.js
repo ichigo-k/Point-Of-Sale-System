@@ -9,7 +9,8 @@ dotenv.config();
 
 
 
-app.use(express.urlencoded({extended:false}))
+try{
+    app.use(express.urlencoded({extended:false}))
 
 ///Setting view engine 
 app.set("view-engine","ejs")
@@ -19,17 +20,17 @@ app.use(express.static(__dirname + '/assets'));
 
 //// SignUp routes
 const signupRoutes = require("./routes/signup")
-app.use("/signup",checkNotauth,signupRoutes)
+app.use("/signup",signupRoutes)
 
 
 //// Login routes
 const loginRoutes = require("./routes/login")
-app.use("/login",checkNotauth,loginRoutes)
+app.use("/login",loginRoutes)
 
 
 //// Home routes
 const homeRoutes = require("./routes/home");
-app.use("/home",checkAuth,homeRoutes)
+app.use("/home",homeRoutes)
 
 
 
@@ -44,4 +45,11 @@ mongoose.connect(process.env.URI)
 .catch((err)=>{
     console.error(`Something went wrong : ${err} `)  ///Error handler
 })
+
+}
+
+catch(error){
+    console.log("There is an error")
+    console.log(error)
+}
 
