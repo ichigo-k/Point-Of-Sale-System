@@ -9,10 +9,6 @@ var _require = require("mongoose"),
     mongoose = _require["default"],
     connect = _require.connect;
 
-var Session = require("./models/sessionsDB");
-
-var session = require("express-session");
-
 var dotenv = require('dotenv');
 
 dotenv.config();
@@ -20,12 +16,6 @@ dotenv.config();
 try {
   app.use(express.urlencoded({
     extended: false
-  })); /// Authenticating user 
-
-  app.use(session({
-    secret: process.env.SESSION_KEY,
-    resave: false,
-    saveUninitialized: false
   })); ///Setting view engine 
 
   app.set("view-engine", "ejs");
@@ -50,11 +40,8 @@ try {
       console.log("Server is running on port ".concat(PORT)); ///SERVER RUNNING ON PORT
     });
   })["catch"](function (err) {
-    console.error("Something went wrong :"); ///Error handler
-
-    console.error(err); ///Error handler
+    console.error("Something went wrong : ".concat(err, " ")); ///Error handler
   });
-} catch (error) {
-  console.log("There is an error");
-  console.log(error);
+} catch (e) {
+  console.log("".concat(e));
 }
