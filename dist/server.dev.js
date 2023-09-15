@@ -9,38 +9,52 @@ var _require = require("mongoose"),
     mongoose = _require["default"],
     connect = _require.connect;
 
-var user = require("./models/usersDB");
+var Session = require("./models/sessionsDB");
 
-var product = require("./models/ProductsDB");
+var session = require("express-session");
 
 var dotenv = require('dotenv');
 
 dotenv.config();
-app.use(express.urlencoded({
-  extended: false
-})); ///Setting view engine 
 
-app.set("view-engine", "ejs");
-app.use(express["static"](__dirname + '/assets')); //// SignUp routes
+try {
+  app.use(express.urlencoded({
+    extended: false
+  })); /// Authenticating user 
 
-var signupRoutes = require("./routes/signup");
+  app.use(session({
+    secret: process.env.SESSION_KEY,
+    resave: false,
+    saveUninitialized: false
+  })); ///Setting view engine 
 
-app.use("/signup", checkNotauth, signupRoutes); //// Login routes
+  app.set("view-engine", "ejs");
+  app.use(express["static"](__dirname + '/assets')); //// SignUp routes
 
-var loginRoutes = require("./routes/login");
+  var signupRoutes = require("./routes/signup");
 
-app.use("/login", checkNotauth, loginRoutes); //// Home routes
+  app.use("/signup", signupRoutes); //// Login routes
 
-var homeRoutes = require("./routes/home");
+  var loginRoutes = require("./routes/login");
 
-app.use("/home", checkAuth, homeRoutes); ///Connect to mongodb Databse
+  app.use("/login", loginRoutes); //// Home routes
 
-mongoose.connect(process.env.URI).then(function () {
-  console.log('Connected To MongoDB'); ///SUCESS MESSAGE
+  var homeRoutes = require("./routes/home");
 
-  app.listen(PORT, function () {
-    console.log("Server is running on port ".concat(PORT)); ///SERVER RUNNING ON PORT
+  app.use("/home", homeRoutes); ///Connect to mongodb Databse
+
+  mongoose.connect(process.env.URI).then(function () {
+    console.log('Connected To MongoDB'); ///SUCESS MESSAGE
+
+    app.listen(PORT, function () {
+      console.log("Server is running on port ".concat(PORT)); ///SERVER RUNNING ON PORT
+    });
+  })["catch"](function (err) {
+    console.error("Something went wrong :"); ///Error handler
+
+    console.error(err); ///Error handler
   });
-})["catch"](function (err) {
-  console.error("Something went wrong : ".concat(err, " ")); ///Error handler
-});
+} catch (error) {
+  console.log("There is an error");
+  console.log(error);
+}
