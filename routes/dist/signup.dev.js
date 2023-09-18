@@ -24,7 +24,8 @@ router.post("/", function _callee(req, res) {
         case 3:
           hashedpassword = _context.sent;
           /// Changing passowrd to encrypted one 
-          req.body.password = hashedpassword; /// Sending object to database(mongoDB)
+          req.body.password = hashedpassword;
+          req.body.isloggedin = true; /// Sending object to database(mongoDB)
 
           user = new User(req.body);
           user.save().then(function (result) {
@@ -36,19 +37,19 @@ router.post("/", function _callee(req, res) {
 
             res.redirect("../signup");
           });
-          _context.next = 12;
+          _context.next = 13;
           break;
 
-        case 9:
-          _context.prev = 9;
+        case 10:
+          _context.prev = 10;
           _context.t0 = _context["catch"](0);
           console.log(_context.t0); ///Error handler incase 
 
-        case 12:
+        case 13:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 9]]);
+  }, null, null, [[0, 10]]);
 });
 module.exports = router; /// Exporting router

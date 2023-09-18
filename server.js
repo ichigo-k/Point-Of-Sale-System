@@ -43,4 +43,7 @@ mongoose.connect(process.env.URI)
 .catch((err)=>{
     console.error(`Something went wrong : ${err} `)  ///Error handler
 })
-} catch (e){console.log(`${e}`)}
+} catch (e){console.log(`There was an error:
+${e}
+`)}
+

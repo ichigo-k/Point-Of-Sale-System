@@ -43,5 +43,5 @@ try {
     console.error("Something went wrong : ".concat(err, " ")); ///Error handler
   });
 } catch (e) {
-  console.log("".concat(e));
+  console.log("There was an error:\n".concat(e, "\n"));
 }

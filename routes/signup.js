@@ -14,6 +14,7 @@ router.post("/",async (req,res)=>{
 
         /// Changing passowrd to encrypted one 
         req.body.password = hashedpassword
+        req.body.isloggedin = true
 
         /// Sending object to database(mongoDB)
         const user = new User(req.body)
