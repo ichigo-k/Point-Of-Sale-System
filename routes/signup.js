@@ -21,7 +21,7 @@ router.post("/",async (req,res)=>{
         user.save()
         .then((result)=>{
             console.log("NEW USER ADDED")  //// Success message
-            res.redirect("../home")  /// 
+            res.redirect("home")  /// 
         })
         .catch((err)=>{
             console.log(err) /// Error handler

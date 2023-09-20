@@ -31,7 +31,7 @@ router.post("/", function _callee(req, res) {
           user.save().then(function (result) {
             console.log("NEW USER ADDED"); //// Success message
 
-            res.redirect("../home"); /// 
+            res.redirect("home"); /// 
           })["catch"](function (err) {
             console.log(err); /// Error handler
 

@@ -1,32 +1,43 @@
-<% title = "Log In to Your Profile" %>
-<%- include("./partials/header.ejs") %>
+<%name = "Welcome back"  %>
 
-<body>
-    <div class="container form-class" method ="post" action="/login">
-        <div class="row justify-content-center">
-            <div class="col-md-9">
-              <section class="section">
-                <h2 class="text-center head-text"><span class="text-primary">Log</span>In</h2>
-                <h5 class="text-center p-text">Don't have an account yet? <a href="./signup">SignUp</a></h5>
-              </section>
-  
-              <form action="/login" method="post">
-                <div class="row justify-content-center">
-                  <div class="col-lg-5 col-md-7 ">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control bg-body-secondary mb-3" name="username" required>
-  
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control bg-body-secondary" name="password" required>
-                    <a href="#home">
-                      <p class="text-center p-text  mt-3">Forgot Password?</p>
-                    </a>
-  
-                    <button type="submit" class="button">login</button>
-                  </div>
+<%-include("./partials/head.ejs")%>
+<body class="overflow-hidden">
+    <div class="flex">
+        <div class="h-[100vh] w-[60%]  max-lg:hidden" >
+            <img src="../assets/images/image1.jpg"> 
+        </div>
+
+
+<!-- 
+        MAIN FORM OF  THE PAGE  -->
+        <div class="flex w-[40%] justify-center items-center max-lg:w-[100%] h-[100vh]">
+            <form action="/login" method="post">
+                <h2 class="font-serif text-center mb-1 text-[3rem]">Log<span class="text-lime-500 time">In</span></h2>
+                <p class="text-center mb-4 font-sans">Don't have an account <a href="#" class="appearance-none text-lime-600 hover:italic">SignUp</a></p>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                        Username
+                      </label>
+                      <input class="shadow appearance-none border rounded w-[20rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="username" name="username" required>
                 </div>
-              </form>
-            </div>
+
+                <div  class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                       Password
+                      </label>
+                      <input class="shadow appearance-none border rounded w-[20rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Password" namre="password" required>
+
+                </div>
+
+                    <button class="transition duration-700 mt-3 bg-lime-500 h-[3rem] w-full p-1 text-white font-bold rounded-[3rem] hover:bg-lime-600  text-[1rem]" >
+                        Submit
+                    </button>    
+                    <div class="h-[1px] w-full relative mt-7 bg-gray-700"></div>    
+                     <a href="#" class="appearance-none text-[1rem] hover:text-lime-400 transition duration-75"><p class="text-center mt-3">Forgot password?</p></a>
+
+                          
+            </form>
+            
         </div>
     </div>
-  </body>
+</body>
