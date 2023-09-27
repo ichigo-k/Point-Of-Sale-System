@@ -9,6 +9,11 @@ router.get("/",(req,res)=>{
 
 router.post("/",async (req,res)=>{
     try {
+        const {username, email} = req.body
+        const existingUser = await User.findOne({ $or: [{username }, {email }] });
+        if (existingUser){
+            res.redirect("login?username and email alredy exists")
+        }
         /// Securing password with bcrypt
         const hashedpassword = await bcrypt.hash(req.body.password,10)
 
