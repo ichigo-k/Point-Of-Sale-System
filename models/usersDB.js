@@ -15,7 +15,8 @@ const UserSchema = new Schema({
         required: true
     },
     isLogedin:{
-        type:Boolean
+        type:Boolean,
+        required:true
     }
 })
 

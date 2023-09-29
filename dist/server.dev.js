@@ -12,15 +12,15 @@ var _require = require("mongoose"),
 var dotenv = require('dotenv');
 
 dotenv.config();
+app.use(express["static"]("".concat(__dirname, "+'/assets'"))); ///Setting view engine 
+
+app.set("view engine", "ejs");
+app.use(express.urlencoded({
+  extended: false
+}));
 
 try {
-  app.use(express.urlencoded({
-    extended: false
-  })); ///Setting view engine 
-
-  app.set("view-engine", "ejs");
-  app.use(express["static"](__dirname + '/assets')); //// SignUp routes
-
+  //// SignUp routes
   var signupRoutes = require("./routes/signup");
 
   app.use("/signup", signupRoutes); //// Login routes
@@ -43,5 +43,5 @@ try {
     console.error("Something went wrong : ".concat(err, " ")); ///Error handler
   });
 } catch (e) {
-  console.log("There was an error:\n".concat(e, "\n"));
+  console.log("".concat(e));
 }

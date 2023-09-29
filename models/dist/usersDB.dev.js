@@ -17,7 +17,8 @@ var UserSchema = new Schema({
     required: true
   },
   isLogedin: {
-    type: Boolean
+    type: Boolean,
+    required: true
   }
 });
 var User = mongoose.model("User", UserSchema);

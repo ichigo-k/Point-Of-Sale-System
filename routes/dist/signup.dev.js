@@ -9,7 +9,9 @@ var User = require("../models/usersDB");
 var bcrypt = require("bcrypt");
 
 router.get("/", function (req, res) {
-  res.render("signup.ejs");
+  res.render("signup.ejs", {
+    title: "Join the community"
+  });
 });
 router.post("/", function _callee(req, res) {
   var _req$body, username, email, existingUser, hashedpassword, user;

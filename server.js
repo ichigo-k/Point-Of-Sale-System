@@ -6,15 +6,15 @@ const dotenv = require('dotenv');
 dotenv.config(); 
 
 
+app.use(express.static(`${__dirname}+'/assets'`));
+///Setting view engine 
+app.set("view engine","ejs")
+
+app.use(express.urlencoded({extended:false}))
+
+
 
 try{
-    app.use(express.urlencoded({extended:false}))
-
-///Setting view engine 
-app.set("view-engine","ejs")
-app.use(express.static(__dirname + '/assets'));
-
-
 
 //// SignUp routes
 const signupRoutes = require("./routes/signup")
@@ -43,7 +43,5 @@ mongoose.connect(process.env.URI)
 .catch((err)=>{
     console.error(`Something went wrong : ${err} `)  ///Error handler
 })
-} catch (e){console.log(`There was an error:
-${e}
-`)}
+} catch (e){console.log(`${e}`)}
 

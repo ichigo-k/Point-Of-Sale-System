@@ -13,6 +13,10 @@ const ProductSchema = new Schema({
     Quantity:{
         type : Number,
         required: true
+    },
+    email:{
+        type:String,
+        required:true
     }
 })
 

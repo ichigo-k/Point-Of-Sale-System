@@ -1,32 +1,64 @@
-<% title = "Log In to Your Profile" %>
-<%- include("./partials/header.ejs") %>
+<%- include("./partials/head.ejs") %>
+<body class="">
+    <div class="flex h-screen">
 
-<body>
-    <div class="container form-class" method ="post" action="/login">
-        <div class="row justify-content-center">
-            <div class="col-md-9">
-              <section class="section">
-                <h2 class="text-center head-text"><span class="text-primary">Log</span>In</h2>
-                <h5 class="text-center p-text">Don't have an account yet? <a href="./signup">SignUp</a></h5>
-              </section>
-  
-              <form action="/login" method="post">
-                <div class="row justify-content-center">
-                  <div class="col-lg-5 col-md-7 ">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control bg-body-secondary mb-3" name="username" required>
-  
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control bg-body-secondary" name="password" required>
-                    <a href="#home">
-                      <p class="text-center p-text  mt-3">Forgot Password?</p>
-                    </a>
-  
-                    <button type="submit" class="button">login</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+        <div class="bg-black w-2/5 max-xl:hidden absolute z-10 opacity-50 h-screen "> </div>
+
+
+        <div class="bg-primary w-2/5 max-xl:hidden ">
+            <img src="https://images.pexels.com/photos/7034717/pexels-photo-7034717.jpeg?auto=compress&cs=tinysrgb&w=600" class="h-screen w-full object-cover">
+
+        </div>
+
+
+
+        <div class=" xl:w-3/5 w-full flex justify-center items-center flex-col">
+            <h1 class="text-[2rem] md:text-[3rem] max-sm:text-center p-2 font-bold mb-2 "><span class="text-primary">LOGIN </span>TO YOUR ACCOUNT</h1>
+            <p class="font-medium text-[1rem] mb-10">Don't have an account? <span class="text-primary hover:text-secondary transition-colors "><a href="/signup">SignUp</a></span></p>
+            <form action="/login" method="post">
+                <P class="text-red-500 mb-[1rem] text-center"><%= error %></P>
+               <div class="relative mb-10">
+                <input id="username" type="text" class="border-b py-1 focus:outline-none w-[20rem] focus:border-primary focus:border-b-2 transition-colors peer duration-100" name="username" autocomplete="off" required oninput="setUsername(event)">
+                <label for="username" class="absolute left-0 top-1 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-focus:text-primary duration-100 text-gray-600" id="username-label">Username</label>
+               </div>
+               <div class="relative mb-6">
+                <input id="password" type="password" class="border-b py-1 focus:outline-none w-[20rem] focus:border-primary focus:border-b-2 transition-colors peer duration-100" name="password" autocomplete="off" required oninput="setPassword(event)">
+                <label for="password" class="absolute left-0 top-1 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-focus:text-primary duration-100 text-gray-600 " id="password-label">Password</label>
+               </div>
+               <p class="text-center hover:text-secondary text-italic mb-4"><a href="#">forgot password?</a></p>
+               <button type="submit" class="bg-primary text-white font-bold p-2 rounded-xl w-full hover:bg-secondary transition-colors mb-5">LOGIN</button>
+               <p class="text-center font-bold mb-8">OR</p>
+               <div class="flex gap-8 justify-center">
+                <a href="#"><i class="fa-brands fa-twitter fa-2xl hover:text-secondary text-primary"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook fa-2xl hover:text-secondary text-primary" ></i></a>
+                <a href="#"><i class="fa-brands fa-github fa-2xl hover:text-secondary text-primary"></i></a>
+               </div>
+            </form>
         </div>
     </div>
-  </body>
+
+
+    <script>
+
+    const usernameEl = document.querySelector("#username-label")
+    const passwordEl = document.querySelector("#password-label")
+    
+        function setUsername(event) {
+       const text = event.target.value
+       if(text){
+        usernameEl.classList.add("text-primary","-top-4","text-xs")
+       }else{
+        usernameEl.classList.remove("text-primary","-top-4","text-xs")
+       }
+}
+function setPassword(event) {
+       const text = event.target.value
+       if(text){
+        passwordEl.classList.add("text-primary","-top-4","text-sm")
+       }else{
+        passwordEl.classList.remove("text-primary","-top-4","text-sm")
+       }
+}
+
+    </script>
+</body>
