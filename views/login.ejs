@@ -16,7 +16,11 @@
             <h1 class="text-[2rem] md:text-[3rem] max-sm:text-center p-2 font-bold mb-2 "><span class="text-primary">LOGIN </span>TO YOUR ACCOUNT</h1>
             <p class="font-medium text-[1rem] mb-10">Don't have an account? <span class="text-primary hover:text-secondary transition-colors "><a href="/signup">SignUp</a></span></p>
             <form action="/login" method="post">
-                <P class="text-red-500 mb-[1rem] text-center"><%= error %></P>
+                <% if (error === null) { %>
+                 <p class="hidden"></p>
+                <% } else{ %>
+                <P class="text-red-500 mb-[2rem] text-center bg-red-200  p-2 w-full shadow-lg"><%= error %></P>
+                <% } %>
                <div class="relative mb-10">
                 <input id="username" type="text" class="border-b py-1 focus:outline-none w-[20rem] focus:border-primary focus:border-b-2 transition-colors peer duration-100" name="username" autocomplete="off" required oninput="setUsername(event)">
                 <label for="username" class="absolute left-0 top-1 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-focus:text-primary duration-100 text-gray-600" id="username-label">Username</label>
@@ -59,6 +63,6 @@ function setPassword(event) {
         passwordEl.classList.remove("text-primary","-top-4","text-sm")
        }
 }
-
+    let error = null
     </script>
 </body>

@@ -1,0 +1,10 @@
+@use "custom";
+
+
+///Componets
+@use"./componets/animation";
+@use"./componets/button";
+@use"./componets/mixins";
+@use"./componets/typography";
+
+@use"./elements.scss";

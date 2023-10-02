@@ -1,4 +1,65 @@
 <%- include("./partials/head.ejs") %>
 <body>
-    <img src="../assets/image.jpg" alt="">
+    <div class="w-full h-screen bg-secondary flex justify-center items-center" style="background: url('https://cdn.pixabay.com/photo/2016/06/25/12/52/laptop-1478822_1280.jpg'); background-size: cover; background-repeat:no-repeat;">
+        <div class="h-screen w-full bg-black/50 absolute"></div>
+
+        <div class="bg-white z-10 p-5 shadow-lg rounded-xl w-50 flex flex-col justify-center items-center">
+            <h1 class="text-[2rem] md:text-[3rem] max-sm:text-center p-2 font-bold leading-4">CREATE A NEW</h1>
+            <p class="text-primary text-[2rem] md:text-[3rem] max-sm:text-center p-2 font-bold relative">ACCOUNT</p>
+            <p class="font-medium text-[1rem] mb-10">Already have an account? <span class="text-primary hover:text-secondary transition-colors "><a href="/login">login</a></span></p>
+            <% if (error === null) { %>
+                <p class="hidden"></p>
+               <% } else{ %>
+               <P class="text-red-500 mb-[2rem] text-center bg-red-200  p-2 w-full shadow-lg "><%= error %></P>
+               <% } %>
+               <form action="/signup" method ="post">
+                <div class="relative mb-10">
+                <input id="username" type="text" class="border-b py-1 focus:outline-none w-[20rem] focus:border-primary focus:border-b-2 transition-colors peer duration-100" name="username" autocomplete="off" required oninput="setUsername(event)">
+                <label for="username" class="absolute left-0 top-1 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-focus:text-primary duration-100 text-gray-600" id="username-label">Username</label>
+               </div>
+               <div class="relative mb-10">
+                <input id="email" type="email" class="border-b py-1 focus:outline-none w-[20rem] focus:border-primary focus:border-b-2 transition-colors peer duration-100" name="email" autocomplete="off" required oninput="setEmail(event)">
+                <label for="email" class="absolute left-0 top-1 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-focus:text-primary duration-100 text-gray-600" id="email-label">Email</label>
+               </div>
+               <div class="relative mb-6">
+                <input id="password" type="password" class="border-b py-1 focus:outline-none w-[20rem] focus:border-primary focus:border-b-2 transition-colors peer duration-100" name="password" autocomplete="off" required oninput="setPassword(event)">
+                <label for="password" class="absolute left-0 top-1 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-focus:text-primary duration-100 text-gray-600 " id="password-label">Password</label>
+               </div>
+               <button type="submit" class="bg-primary text-white font-bold p-2 rounded-xl w-full hover:bg-secondary transition-colors mb-5">SIGNUP</button>
+        </form>
+
+        </div>
+
+    </div>
+    <script>
+
+        const usernameEl = document.querySelector("#username-label")
+        const emailEl = document.querySelector("#email-label")
+        const passwordEl = document.querySelector("#password-label")
+        
+            function setUsername(event) {
+           const text = event.target.value
+           if(text){
+            usernameEl.classList.add("text-primary","-top-4","text-xs")
+           }else{
+            usernameEl.classList.remove("text-primary","-top-4","text-xs")
+           }
+    }
+    function setPassword(event) {
+           const text = event.target.value
+           if(text){
+            passwordEl.classList.add("text-primary","-top-4","text-sm")
+           }else{
+            passwordEl.classList.remove("text-primary","-top-4","text-sm")
+           }
+    }
+    function setEmail(event) {
+           const text = event.target.value
+           if(text){
+            emailEl.classList.add("text-primary","-top-4","text-sm")
+           }else{
+            emailEl.classList.remove("text-primary","-top-4","text-sm")
+           }
+    }
+        </script>
 </body>

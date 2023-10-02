@@ -4,25 +4,16 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "auto-prefixer": "^0.4.2",
     "bcrypt": "^5.1.1",
-    "bootstrap": "^5.3.1",
     "connect-mongodb-session": "^3.1.1",
-    "dart-sass": "^1.25.0",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "fontawesome": "^5.6.3",
     "mongoose": "^7.4.3",
     "nodemon": "^3.0.1"
   },
-  "devDependencies": {
-    "sass": "^1.66.1"
-  },
   "scripts": {
-    "start": "nodemon server.js",
-    "compile:sass": "sass --watch scss:assets/css"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",

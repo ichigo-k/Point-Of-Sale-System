@@ -11,10 +11,10 @@ var _require = require("mongoose"),
 
 var dotenv = require('dotenv');
 
-dotenv.config();
-app.use(express["static"]("".concat(__dirname, "+'/assets'"))); ///Setting view engine 
+dotenv.config(); ///Setting view engine 
 
 app.set("view engine", "ejs");
+app.use(express["static"](__dirname + '/assets'));
 app.use(express.urlencoded({
   extended: false
 }));
@@ -33,7 +33,10 @@ try {
 
   app.use("/home", homeRoutes); ///Connect to mongodb Databse
 
-  mongoose.connect(process.env.URI).then(function () {
+  mongoose.connect(process.env.URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then(function () {
     console.log('Connected To MongoDB'); ///SUCESS MESSAGE
 
     app.listen(PORT, function () {

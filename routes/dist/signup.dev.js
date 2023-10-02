@@ -10,7 +10,8 @@ var bcrypt = require("bcrypt");
 
 router.get("/", function (req, res) {
   res.render("signup.ejs", {
-    title: "Join the community"
+    title: "Join the community",
+    error: null
   });
 });
 router.post("/", function _callee(req, res) {
@@ -34,15 +35,23 @@ router.post("/", function _callee(req, res) {
         case 4:
           existingUser = _context.sent;
 
-          if (existingUser) {
-            res.redirect("login?username and email alredy exists");
-          } /// Securing password with bcrypt
+          if (!existingUser) {
+            _context.next = 9;
+            break;
+          }
 
+          res.render("signup", {
+            error: "An account with the username already exists",
+            title: "Join the community"
+          });
+          _context.next = 16;
+          break;
 
-          _context.next = 8;
+        case 9:
+          _context.next = 11;
           return regeneratorRuntime.awrap(bcrypt.hash(req.body.password, 10));
 
-        case 8:
+        case 11:
           hashedpassword = _context.sent;
           /// Changing passowrd to encrypted one 
           req.body.password = hashedpassword;
@@ -52,25 +61,28 @@ router.post("/", function _callee(req, res) {
           user.save().then(function (result) {
             console.log("NEW USER ADDED"); //// Success message
 
+            console.log(req.body);
             res.redirect("../home"); /// 
           })["catch"](function (err) {
             console.log(err); /// Error handler
 
             res.redirect("../signup");
           });
-          _context.next = 18;
+
+        case 16:
+          _context.next = 21;
           break;
 
-        case 15:
-          _context.prev = 15;
+        case 18:
+          _context.prev = 18;
           _context.t0 = _context["catch"](0);
           console.log(_context.t0); ///Error handler incase 
 
-        case 18:
+        case 21:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 15]]);
+  }, null, null, [[0, 18]]);
 });
 module.exports = router; /// Exporting router

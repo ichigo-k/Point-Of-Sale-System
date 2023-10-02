@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt")
 
 
 router.get("/",(req,res)=>{
-    res.render("signup.ejs",{title:"Join the community"})
+    res.render("signup.ejs",{title:"Join the community",error:null})
 })
 
 router.post("/",async (req,res)=>{
@@ -13,9 +13,9 @@ router.post("/",async (req,res)=>{
         const {username, email} = req.body
         const existingUser = await User.findOne({ $or: [{username }, {email }] });
         if (existingUser){
-            res.redirect("login?username and email alredy exists")
-        }
-        /// Securing password with bcrypt
+            res.render("signup",{error:"An account with the username already exists", title:"Join the community"})
+        }else{
+             /// Securing password with bcrypt
         const hashedpassword = await bcrypt.hash(req.body.password,10)
 
         /// Changing passowrd to encrypted one 
@@ -27,6 +27,7 @@ router.post("/",async (req,res)=>{
         user.save()
         .then((result)=>{
             console.log("NEW USER ADDED")  //// Success message
+            console.log(req.body)
             res.redirect("../home")  /// 
         })
         .catch((err)=>{
@@ -34,6 +35,9 @@ router.post("/",async (req,res)=>{
             res.redirect("../signup")
         })
     } 
+            
+        }
+       
     catch (error) {
         console.log(error)  ///Error handler incase 
     }

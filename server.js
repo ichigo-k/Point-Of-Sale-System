@@ -5,10 +5,9 @@ const { default: mongoose, connect } = require("mongoose")
 const dotenv = require('dotenv');
 dotenv.config(); 
 
-
-app.use(express.static(`${__dirname}+'/assets'`));
 ///Setting view engine 
 app.set("view engine","ejs")
+app.use(express.static(__dirname+'/assets'));
 
 app.use(express.urlencoded({extended:false}))
 
@@ -33,7 +32,12 @@ app.use("/home",homeRoutes)
 
 
 ///Connect to mongodb Databse
-mongoose.connect(process.env.URI)
+mongoose.connect(
+    process.env.URI,
+    {useNewUrlParser : true,
+    useUnifiedTopology:true
+    }
+    )
 .then(() => {
     console.log('Connected To MongoDB')///SUCESS MESSAGE
     app.listen(PORT,()=>{
